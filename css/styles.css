@@ -1,20 +1,22 @@
-
-
-h1{
+.header{
     text-align: center;
-    margin-top: 30px;
 }
+
 .languages-container{
+    margin-bottom: 30px;
     text-align: center;
 }
-.container{
-    padding-top: 10px;
+.first-section, .second-section{
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    flex-direction: column;
+    width: 180px;
+    
 }
-#formTraduce{
+label{
+    justify-content: center;
+}
+.result-container{
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
 }

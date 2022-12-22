@@ -9,35 +9,31 @@
     <title>TRADUCTOR</title>
 </head>
 <body>
-    <h1>TRADUCTOR</h1>
+    <h1 class="header">TRADUCTOR</h1>
 
 
     <div class="languages-container">
-        <label for="selectLanguagesFrom">Traducir del:</label>
-        <select name="languagesFrom" id="selectLanguagesFrom">
-        </select>
-        <label for="selectLanguagesFrom">al:</label>
-        <select name="languagesTo" id="selectLanguagesTo">
-        </select>
-       
+            <label for="selectLanguagesFrom">Traducir del:</label>
+            <select name="languagesFrom" id="selectLanguagesFrom">
+            </select>
+            <label for="selectLanguagesFrom">al:</label>
+            <select name="languagesTo" id="selectLanguagesTo">
+            </select>
     </div>
     
 
-    <div class="container">
-        
-        <form action="" id="formTraduce">
-            <div>
-                <label for="text">Ingresa el texto a traducir</label><br>
-                <textarea name="text" id="text" cols="30" rows="10"></textarea>
-            </div>
-            <input class="btn btn-success" id="submit" type="submit" value="Traducir">
-        </form>
-
-        <div class="result">
-            <label for="Result">Resultado:</label><br>
-            <textarea name="result" id="result" cols="30" rows="10"></textarea>
+    <div class="result-container">
+        <div class="first-section">
+            <label for="inputTranslate">Ingresa el texto</label>
+            <textarea name="" id="input-translate" cols="10" rows="10"></textarea>
         </div>
-
+            <button id="translate">Traducir</button>
+            
+            <div class="second-section">
+                <label for="outTranslate">Resultado</label>
+                <textarea name="" id="output-translate" cols="10" rows="10"></textarea>
+            </div>
+        
     </div>
     <script src="./js/main.js"></script>
 </body>
