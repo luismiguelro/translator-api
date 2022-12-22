@@ -41,8 +41,8 @@ fetch(GET_URL,OPTIONS)
         }).catch(error => console.log(error));
 
         // almacenar valores a traducir
-        let source_language;
-        let target_language
+        let source_language = 'es';
+        let target_language = 'af'
 
         //mostrar resultado
         let translateOut = document.querySelector('#output-translate');
