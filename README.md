@@ -38,5 +38,5 @@ Users should be able to:
 
 ## Author
 
-- Frontend Mentor - [@luismiguelrodriguez3](https://github.com/luismiguelrodriguez3)
+- Twitter - [luismrodriguez0]([https://github.com/luismiguelrodriguez3](https://twitter.com/luismrodriguez0))
 
