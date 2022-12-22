@@ -1,5 +1,5 @@
 # translator - api
-This is a small project to learn how to consume an API with JS to create my own language translator, with the help of [RapidAPI](https://rapidapi.com/dickyagustin/api/text-translator2/), Note: The design is not the best 😅 ,(soon I will improve it hehe) here what I wanted to put in practice is my first approach consuming an API.
+This is a small project to learn how to consume an API with JS to create my own language translator, with the help of [RapidAPI](https://rapidapi.com), Note: The design is not the best 😅 ,(soon I will improve it hehe) here what I wanted to put in practice is my first approach consuming an API.
 
 ## Table of contents
 
