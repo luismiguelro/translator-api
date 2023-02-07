@@ -6,36 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <title>TRADUCTOR</title>
+    
+     <!--Unicons-->
+     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>language Translator | luismiguelro</title>
 </head>
 <body>
-    <h1 class="header">TRADUCTOR</h1>
-
-
-    <div class="languages-container">
-            <label for="selectLanguagesFrom">Traducir del:</label>
-            <select name="languagesFrom" id="selectLanguagesFrom">
-                <option>Spanish</option>
-            </select>
-            <label for="selectLanguagesFrom">al:</label>
-            <select name="languagesTo" id="selectLanguagesTo">
-            </select>
-    </div>
-    
-
-    <div class="result-container">
-        <div class="first-section">
-            <label for="inputTranslate">Ingresa el texto</label>
-            <textarea name="" id="input-translate" cols="10" rows="10"></textarea>
-        </div>
-            <button id="translate">Traducir</button>
-            
-            <div class="second-section">
-                <label for="outTranslate">Resultado</label>
-                <textarea name="" id="output-translate" cols="10" rows="10"></textarea>
+    <div class="container">
+        <div class="wrapper">
+            <div class="text-input">
+                <textarea class="from-text" placeholder="Enter text"></textarea>
+                <textarea class="to-text" placeholder="Translation"></textarea>
             </div>
-        
+            <!--Controls-->
+            <ul class="controls">
+                <li class="controls__row from">
+                    <div class="controls__row-icons">
+                        <i class="uil uil-volume-up"></i>
+                        <i class="uil uil-copy"></i>
+                    </div>
+                    <!--Select-->
+                    <select class="select">
+                        <option value="en-US">English</option>
+                        <option value="hi-IN">Hindi</option>
+                        <option value="neo-NP">Nepali</option>
+                        
+                    </select>
+                </li>
+                <li class="controls__exchange">
+                    <i class="uil uil-exchange"></i>
+                </li>
+
+                <li class="controls__row to">
+                   
+                    <!--Select-->
+                    <select class="select">
+                        <option value="en-US">English</option>
+                        <option value="hi-IN">Hindi</option>
+                        <option value="neo-NP">Nepali</option>  
+                    </select>
+                    <div class="controls__row-icons">
+                        <i class="uil uil-volume-up"></i>
+                        <i class="uil uil-copy"></i>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+        <button>Translate Text</button>
     </div>
-    <script src="./js/main.js"></script>
 </body>
 </html>
