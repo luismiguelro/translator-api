@@ -85,6 +85,7 @@ const selectTag = document.querySelectorAll("select"),
     translateBtn= document.querySelector("button");
     let fromText = document.querySelector('.from-text'),
     ToText = document.querySelector('.to-text');
+    
 
 // elementos dDOM
 let translateFrom = document.querySelector('.select-from');
@@ -93,10 +94,8 @@ let translateFrom = document.querySelector('.select-from');
 let translateTo = document.querySelector('.select-to');
 
 // Valores predeterminados
-let source_language = '';
-let target_language = '';
-let exchange_from = '';
-let exchange_to = '';
+let source_language = 'af';
+let target_language = 'af';
 
 
 
@@ -135,30 +134,55 @@ function cargarLenguajes(languages){
 
     translateFrom.innerHTML=displayLanguajesFrom;
     translateTo.innerHTML = displayLanguajesTo;
-    
+ 
+
     translateFrom.addEventListener('click',()=>{
-        //console.log(translateFrom.innerHTML);
+        console.log(translateFrom.value);
         source_language = translateFrom.value;
-         languages.find(function(language){
-         if (language.code===source_language){
-            console.log(language.name);
-            }
-        })
+       
     });
+    
 
     translateTo.addEventListener('click',()=>{
-        //console.log(translateTo.innerHTML);
+        console.log(translateTo.value);
         target_language = translateTo.value;
+        
     });
-    
 
-   
+    exchangeIcon.addEventListener('click',()=>{
+
+         // Obtener la opción seleccionada de la lista 1
+         const opcionSeleccionada1 = document.querySelector('.select-from  option:checked');
+         console.log(opcionSeleccionada1);
+         
+          // Si no hay opción seleccionada, salir del evento
+          if (!opcionSeleccionada1) {
+            return;
+        }
 
 
+        // Obtener el valor seleccionado y el índice de la opción en la lista 1
+        const valorSeleccionado = opcionSeleccionada1.value;
+        const indiceSeleccionado = Array.from(translateFrom).indexOf(opcionSeleccionada1);
 
-    
-  
+        const innerSeleccionado = opcionSeleccionada1.innerHTML;
+        
+        
+          // Intercambiar opciones
+            translateFrom[indiceSeleccionado].value = translateTo[0].value;
+            translateTo[0].value = valorSeleccionado;
+
+            translateFrom[indiceSeleccionado].innerHTML= translateTo[0].innerHTML
+            translateTo[0].innerHTML =  innerSeleccionado;
+
+            let tempText = fromText.value
+            fromText.value = ToText.value
+            ToText.value = tempText
+            
+    });
 }
+
+
 /*
 exchangeIcon.addEventListener('click',()=>{
     
@@ -203,16 +227,9 @@ exchangeIcon.addEventListener('click',()=>{
 
 
 
- //tomar valor del translate to
-translateTo.addEventListener('click',()=>{
-    //console.log(translateTo.value);
-    target_language = translateTo.value;
-});
-
-
 translateBtn.addEventListener('click',()=>{
     let text = fromText.value;
-    console.log(text, target_language,target_language,translateFrom[0].value)
+    console.log(text, source_language,target_language,)
 
     let URL_API = `https://api.mymemory.translated.net/get?q=${text}&langpair=${source_language}|${target_language}`
 
