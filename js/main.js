@@ -83,14 +83,13 @@ fetch(GET_URL,OPTIONS)
 const selectTag = document.querySelectorAll("select"),
     exchangeIcon = document.querySelector('.controls__exchange'),
     translateBtn= document.querySelector("button");
-    let fromText = document.querySelector('.from-text'),
+
+let fromText = document.querySelector('.from-text'),
     ToText = document.querySelector('.to-text');
     
 
 // elementos dDOM
 let translateFrom = document.querySelector('.select-from');
-
-
 let translateTo = document.querySelector('.select-to');
 
 // Valores predeterminados
@@ -112,8 +111,7 @@ const OPTIONS={
     }
 }
 
-//Enviar listado de lenguajes disponibles
-//then resolver promesas
+//Enviar listado de lenguajes disponibles - then resolver promesas
 let languages;
 fetch(GET_URL,OPTIONS)
     .then(res=>res.json())
@@ -125,30 +123,35 @@ fetch(GET_URL,OPTIONS)
 }).catch(error => console.log(error));
 
 function cargarLenguajes(languages){
+
+    // cargar lenguajes al from
     let displayLanguajesFrom = languages.map(function(element){
        return `<option value="${element.code}" id="name-from">${element.name}</option>`  
     });
+    // cargar lenguajes al to
     let displayLanguajesTo = languages.map(function(element){
         return `<option value="${element.code}" id="name-to">${element.name}</option>`  
     });
 
+    // añadir al html cada una de las opciones (lenguajes)
     translateFrom.innerHTML=displayLanguajesFrom;
     translateTo.innerHTML = displayLanguajesTo;
  
 
+    // obtener valor del from, para luego mandar a la API
     translateFrom.addEventListener('click',()=>{
         console.log(translateFrom.value);
         source_language = translateFrom.value;
-       
     });
     
-
+     // obtener valor del to, para luego mandar a la API
     translateTo.addEventListener('click',()=>{
         console.log(translateTo.value);
         target_language = translateTo.value;
         
     });
 
+    // Cambiar
     exchangeIcon.addEventListener('click',()=>{
 
          // Obtener la opción seleccionada de la lista 1
@@ -182,58 +185,19 @@ function cargarLenguajes(languages){
     });
 }
 
-
-/*
-exchangeIcon.addEventListener('click',()=>{
-    
-    // guardar nombre para del que esta activo
-    languages.forEach(item=>{
-        
-        if(target_language===item.code){
-            exchange_to = item.name; 
-        }  
-
-    });
-    
-    let tempText = fromText.value,
-        tempLang= nameFrom.innerHTML;
-        //tempLangTo = nameTo.innerHTML;
-    fromText.value = ToText.value
-    ToText.value = tempText
-    nameFrom.innerHTML =exchange_to
-    nameTo.innerHTML = exchange_from
-    console.log(exchange_to);
-
-    /*
-    let tempText = fromText.value, 
-    tempLang = exchange_from;
-        translateFrom.value = translateTo.value,
-        translateFrom = exchange_to,
-        translateTo.value = tempText,
-        translateTo = tempLang
-
-    
-        
-        console.log({
-            tempText,
-        tempLang,
-        translateFrom ,
-        exchange_from,
-        ToText ,
-        translateTo,
-        });
-});
-*/
-
-
-
+// Realizar solicitud a la API
 translateBtn.addEventListener('click',()=>{
+
+    // Textro a traducit
     let text = fromText.value;
     console.log(text, source_language,target_language,)
+
+    //url API, en el que envia, text : texto a traducit, source_language: lenguaje origen, target_language: lenguaje respuesta
 
     let URL_API = `https://api.mymemory.translated.net/get?q=${text}&langpair=${source_language}|${target_language}`
 
     fetch(URL_API).then(res => res.json()).then(data=>{
+        // obtener traducción y mandarla al campo
         ToText.value = data.responseData.translatedText;
     })
 });
