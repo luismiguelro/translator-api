@@ -80,9 +80,11 @@ fetch(GET_URL,OPTIONS)
 /*---------------------------------VERSION 2 ---------------*/
 
 // Tags
+console.log("Hola, bienvenido!")
 const selectTag = document.querySelectorAll("select"),
     exchangeIcon = document.querySelector('.controls__exchange'),
-    translateBtn= document.querySelector("button");
+    translateBtn= document.querySelector("button")
+    icons = document.querySelectorAll(".row i");
 
 let fromText = document.querySelector('.from-text'),
     ToText = document.querySelector('.to-text');
@@ -95,6 +97,8 @@ let translateTo = document.querySelector('.select-to');
 // Valores predeterminados
 let source_language = 'af';
 let target_language = 'af';
+
+
 
 
 
@@ -118,11 +122,11 @@ fetch(GET_URL,OPTIONS)
     .then(objeto =>{
         languages = objeto.data.languages;
         
-        cargarLenguajes(languages)
+        loadLanguages(languages)
 
 }).catch(error => console.log(error));
 
-function cargarLenguajes(languages){
+function loadLanguages(languages){
 
     // cargar lenguajes al from
     let displayLanguajesFrom = languages.map(function(element){
@@ -140,13 +144,13 @@ function cargarLenguajes(languages){
 
     // obtener valor del from, para luego mandar a la API
     translateFrom.addEventListener('click',()=>{
-        console.log(translateFrom.value);
+        //console.log(translateFrom.value);
         source_language = translateFrom.value;
     });
     
      // obtener valor del to, para luego mandar a la API
     translateTo.addEventListener('click',()=>{
-        console.log(translateTo.value);
+        //console.log(translateTo.value);
         target_language = translateTo.value;
         
     });
@@ -156,7 +160,7 @@ function cargarLenguajes(languages){
 
          // Obtener la opción seleccionada de la lista 1
          const opcionSeleccionada1 = document.querySelector('.select-from  option:checked');
-         console.log(opcionSeleccionada1);
+         //console.log(opcionSeleccionada1);
          
           // Si no hay opción seleccionada, salir del evento
           if (!opcionSeleccionada1) {
@@ -190,7 +194,7 @@ translateBtn.addEventListener('click',()=>{
 
     // Textro a traducit
     let text = fromText.value;
-    console.log(text, source_language,target_language,)
+    //console.log(text, source_language,target_language,)
 
     //url API, en el que envia, text : texto a traducit, source_language: lenguaje origen, target_language: lenguaje respuesta
 
@@ -201,3 +205,31 @@ translateBtn.addEventListener('click',()=>{
         ToText.value = data.responseData.translatedText;
     })
 });
+
+// icons
+icons.forEach(icon=>{
+    icon.addEventListener("click",({target})=>{
+        if(target.classList.contains("uil-copy")){
+           // si el icono pulsado tiene el id de, copia el valor del FrpmTextarea, si no, copia el valor del Totextarea
+            if(target.id == "from"){
+                //console.log("From coy icon clicked");
+                navigator.clipboard.writeText(fromText.value)
+            } else{
+                //console.log("To coy icon clicked");
+                navigator.clipboard.writeText(ToText.value)
+
+            }
+        } else{
+            //console.log("Speech icon clicked");
+            let utterance;
+            if(target.id == "from"){
+               utterance = new SpeechSynthesisUtterance(fromText.value);
+               utterance.lang = "English"
+            } else{
+                utterance = new SpeechSynthesisUtterance(ToText.value);
+                utterance.lang = "English"
+            }
+            speechSynthesis.speak(utterance)
+        }
+    })
+})
