@@ -93,3 +93,7 @@ body{
     border-radius: 5px;
     background: #0f2b46;
 }
+#name-from,
+#name-to{
+    text-align: center;
+}

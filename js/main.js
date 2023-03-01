@@ -87,29 +87,34 @@ function loadLanguages(languages){
     // Cambiar
     exchangeIcon.addEventListener('click',()=>{
 
-         // Obtener la opción seleccionada de la lista 1
-         const opcionSeleccionada1 = document.querySelector('.select-from  option:checked');
+         // Obtener la opción seleccionada de from
+         const opcionFrom = document.querySelector('.select-from  option:checked');
+         const opcionTo = document.querySelector('.select-to  option:checked');
          //console.log(opcionSeleccionada1);
          
           // Si no hay opción seleccionada, salir del evento
-          if (!opcionSeleccionada1) {
+          if (!opcionFrom || !opcionTo) {
             return;
         }
 
 
-        // Obtener el valor seleccionado y el índice de la opción en la lista 1
-        const valorSeleccionado = opcionSeleccionada1.value;
-        const indiceSeleccionado = Array.from(translateFrom).indexOf(opcionSeleccionada1);
+        // Obtener el valor seleccionado y el íopcionFromdice de la opción en la opcion from
+        const valorFrom = opcionFrom.value;
+        const indiceFrom = Array.from(translateFrom).indexOf(opcionFrom);
+        const innerFrom = opcionFrom.innerHTML;
 
-        const innerSeleccionado = opcionSeleccionada1.innerHTML;
+        // Obtener el valor seleccionado y el íopcionFromdice de la opción en la opcion from
+        const valorTo = opcionTo.value;
+        const indiceTo = Array.from(translateTo).indexOf(opcionTo);
+        const innerTo = opcionTo.innerHTML;
         
         
           // Intercambiar opciones
-            translateFrom[indiceSeleccionado].value = translateTo[0].value;
-            translateTo[0].value = valorSeleccionado;
+            translateFrom[indiceFrom].value = translateTo[indiceTo].value;
+            translateTo[indiceTo].value = valorFrom;
 
-            translateFrom[indiceSeleccionado].innerHTML= translateTo[0].innerHTML
-            translateTo[0].innerHTML =  innerSeleccionado;
+            translateFrom[indiceFrom].innerHTML= translateTo[indiceTo].innerHTML
+            translateTo[indiceTo].innerHTML =  innerFrom;
 
             let tempText = fromText.value;
             fromText.value = ToText.value
