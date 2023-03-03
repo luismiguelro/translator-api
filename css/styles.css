@@ -97,3 +97,59 @@ body{
 #name-to{
     text-align: center;
 }
+
+/*footer*/
+.footer {
+    text-align: center;
+    
+    color: #0f2b46;
+    font-size: 10px;
+    padding-top: 25px;
+    
+  }
+  .footer a {
+    color: #0f2b46;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /*Querys*/
+  /* Estilos para pantallas de menos de 768px de ancho */
+@media only screen and (max-width: 767px) {
+    .container {
+      width: 100%;
+    }
+    .text-input {
+      flex-direction: column;
+      align-items: center;
+    }
+    .text-input textarea {
+      height: 150px;
+      margin-bottom: 15px;
+    }
+    .controls {
+      flex-direction: column;
+      align-items: center;
+    }
+    .controls__row.from .controls__row-icons {
+      padding-right: 0px;
+      border-right: none;
+      margin-bottom: 15px;
+    }
+    .controls__row.to .controls__row-icons {
+      padding-left: 0px;
+      border-left: none;
+    }
+    .controls .controls__row-icons {
+      width: 100%;
+      justify-content: center;
+    }
+    .select,
+    .select-from {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+  
+
+  
